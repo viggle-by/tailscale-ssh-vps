@@ -1,0 +1,27 @@
+name: SSH Runner
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  run-ssh:
+    runs-on: ubuntu-latest
+
+    env:
+      TS_AUTHKEY: ${{ secrets.TS_AUTHKEY }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Make ssh.sh executable
+        run: chmod +x ./ssh.sh
+
+      - name: Run SSH setup script
+        run: ./ssh.sh
+
+      - name: Keep runner alive (debug only)
+        run: tail -f /dev/null
