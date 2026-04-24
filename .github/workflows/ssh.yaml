@@ -1,9 +1,8 @@
-name: SSH Runner
+name: SSH Runner (Cron)
 
 on:
-  push:
-    branches:
-      - main
+  schedule:
+    - cron: "*/5 * * * *"   # every 5 minutes
   workflow_dispatch:
 
 jobs:
@@ -22,6 +21,3 @@ jobs:
 
       - name: Run SSH setup script
         run: ./ssh.sh
-
-      - name: Keep runner alive (debug only)
-        run: tail -f /dev/null
