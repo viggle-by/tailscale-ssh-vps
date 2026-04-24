@@ -3,7 +3,7 @@ name: SSH Runner (Cron + Keep Alive)
 on:
   schedule:
     - cron: "*/5 * * * *"   # every 5 minutes
-  workflow_dispatch:
+  push:
 
 jobs:
   run-ssh:
