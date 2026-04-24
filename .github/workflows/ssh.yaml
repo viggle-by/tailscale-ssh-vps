@@ -1,4 +1,4 @@
-name: SSH Runner (Cron)
+name: SSH Runner (Cron + Keep Alive)
 
 on:
   schedule:
@@ -21,3 +21,6 @@ jobs:
 
       - name: Run SSH setup script
         run: ./ssh.sh
+
+      - name: Keep alive
+        run: tail -f /dev/null
